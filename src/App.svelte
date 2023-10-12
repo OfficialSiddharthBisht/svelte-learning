@@ -2,25 +2,8 @@
 	import FeedbackList from "./components/FeedbackList.svelte";
 	import FeedbackStat from "./components/FeedbackStat.svelte";
 	import FeedbackForm from "./components/FeedbackForm.svelte";
-	let feedback = [
-		{
-		id:1,
-		rating: 10,
-		text: "some random text here",
-		},
-		{
-		id:2,
-		rating: 9,
-		text: "some random text here",
-		},
-		{
-		id:3,
-		rating: 10,
-		text: "some random text here",
-		},
-	]
-	$: count = feedback.length
-	$: average = (feedback.reduce((a,{rating})=>a+rating,0)/feedback.length).toFixed(2)
+
+
 	const addFeedback = (e)=>{
 		const newFeedback = e.detail
 		feedback = [newFeedback,...feedback]
@@ -32,7 +15,7 @@
 </script>
 
 <main class="container">
-	<FeedbackForm on:add-feedback={addFeedback}/>
-	<FeedbackStat {count} {average} />
-	<FeedbackList {feedback} on:delete-feedback={delteFeedback}/>
+	<FeedbackForm/>
+	<FeedbackStat />
+	<FeedbackList />
 </main>
